@@ -1,6 +1,7 @@
 image: maven:latest
 
 stages:
+  - build
   - quality
   - jqwik
   - curry
