@@ -1,0 +1,100 @@
+image: maven:latest
+
+stages:
+  - jqwik
+  - curry
+  - composition
+
+#inspired by https://gitlab.com/gitlab-examples/maven/simple-maven-example
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  MAVEN_CLI_OPTS: "--batch-mode"
+
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
+Build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS compile
+
+include:
+  - template: Code-Quality.gitlab-ci.yml
+
+code_quality:
+  artifacts:
+    paths: ['gl-code-quality-report.json']
+  cache: {}
+  rules:
+    - if: '$CODE_QUALITY_DISABLED'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push"' # Run code quality job in merge request pipelines
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'      # Run code quality job in pipelines on the master branch (but not in other branch pipelines)
+    - if: '$CI_COMMIT_TAG'                               # Run code quality job in pipelines for tags
+
+Add:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.AddTest test
+
+Collatz:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.CollatzTest test
+
+Fact:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.FactTest test
+
+Binom:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.BinomTest test
+
+ggT:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.GgtTest test
+
+Fib:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.FibTest test
+
+Examples:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.ExamplesTest test
+
+DeMorgan:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.DeMorganTest test
+
+FactCurry:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.FactTest test
+
+BinomCurry:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.BinomTest test
+
+ggTCurry:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.GgtTest test
+
+FibCurry:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.FibTest test
+
+Composition:
+  stage: composition
+  script:
+    - mvn -Dtest=currying.CompositionTest test
