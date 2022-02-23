@@ -1,6 +1,7 @@
 image: maven:latest
 
 stages:
+  - quality
   - jqwik
   - curry
   - composition
@@ -24,6 +25,7 @@ include:
   - template: Code-Quality.gitlab-ci.yml
 
 code_quality:
+  stage: quality
   artifacts:
     paths: ['gl-code-quality-report.json']
   cache: {}
