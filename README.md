@@ -1,2 +1,2 @@
-# Template-Repository für die Aufgaben Testen mit Jqwik und Curryfizierte Funktionen Java
+# Template-Repository für die Aufgaben Testen mit Jqwik und Curryfizierte Funktionen in Java
 
