@@ -13,9 +13,5 @@ public class Methods {
     else return collatz(3*n + 1);
   }
 
-  static int bad(int a, int b, int c, int d, int e, int f, int g){
-    return 0;
-  }
-
 }
 
