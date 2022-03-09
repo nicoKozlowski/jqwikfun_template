@@ -17,7 +17,7 @@ class ExamplesTest {
 
   @Property
   @FromData("facts")
-  boolean testFact0(@ForAll int n, @ForAll int result) {
+  boolean data_fact0(@ForAll int n, @ForAll int result) {
     return fact0.apply(n) == result;
   }
 
