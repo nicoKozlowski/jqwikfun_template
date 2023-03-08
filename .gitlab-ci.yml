@@ -7,7 +7,7 @@ stages:
   - curry
   - composition
 
-#inspired by https://gitlab.com/gitlab-examples/maven/simple-maven-example
+#inspired by  https://gitlab.com/gitlab-examples/maven/simple-maven-example
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
   MAVEN_CLI_OPTS: "--batch-mode"
