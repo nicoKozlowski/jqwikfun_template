@@ -2,7 +2,7 @@ image: maven:latest
 
 stages:
   - build
-#  - pretest
+  - pretest
   - jqwik
   - curry
   - composition
