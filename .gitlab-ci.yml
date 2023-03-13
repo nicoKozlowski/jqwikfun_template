@@ -2,7 +2,6 @@ image: maven:latest
 
 stages:
   - build
-#  - pretest
   - jqwik
   - curry
   - composition
@@ -22,12 +21,6 @@ Build:
   stage: build
   script:
     - mvn $MAVEN_CLI_OPTS compile
-
-Pass requirements:
-  stage: pretest
-  image: git.mylab.th-luebeck.de:4181/inf2praktikum/jqwikfuntestenvironment
-  script:
-    - StartEnvironment $CI_PROJECT_DIR
 
 Add:
   stage: jqwik
