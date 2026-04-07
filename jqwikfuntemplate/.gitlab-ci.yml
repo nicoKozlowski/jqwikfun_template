@@ -1,0 +1,88 @@
+image: maven:latest
+
+stages:
+  - build
+  - jqwik
+  - curry
+  - composition
+
+#inspired by  https://gitlab.com/gitlab-examples/maven/simple-maven-example
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  MAVEN_CLI_OPTS: "--batch-mode"
+  DOCKER_AUTH_CONFIG: $CI_DOCKER_AUTH_CONFIG
+
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
+Build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS compile
+
+Add:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.AddTest test
+
+Collatz:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.CollatzTest test
+
+Fact:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.FactTest test
+
+Binom:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.BinomTest test
+
+ggT:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.GgtTest test
+
+Fib:
+  stage: jqwik
+  script:
+    - mvn -Dtest=recursion.FibTest test
+
+Examples:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.ExamplesTest test
+
+DeMorgan:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.DeMorganTest test
+
+FactCurry:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.FactTest test
+
+BinomCurry:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.BinomTest test
+
+ggTCurry:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.GgtTest test
+
+FibCurry:
+  stage: curry
+  script:
+    - mvn -Dtest=currying.FibTest test
+
+Composition:
+  stage: composition
+  script:
+    - mvn -Dtest=currying.CompositionTest test
