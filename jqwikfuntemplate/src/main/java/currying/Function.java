@@ -17,6 +17,10 @@ public interface Function<T, U> {
                                              Function<Integer,Integer> f2) {
     return arg -> f1.apply(f2.apply(arg));
     }
+
+  static <T, U, V> Function<T, V> compose(Function<U, V> f1, Function<T, U> f2) {
+    return arg -> f1.apply(f2.apply(arg));
+  }
 }
 
 
