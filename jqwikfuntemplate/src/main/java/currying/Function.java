@@ -21,6 +21,8 @@ public interface Function<T, U> {
   static <T, U, V> Function<T, V> compose(Function<U, V> f1, Function<T, U> f2) {
     return arg -> f1.apply(f2.apply(arg));
   }
+
+  Function<Integer, Function<Integer, Integer>> add = x -> y -> x + y;
 }
 
 
