@@ -12,6 +12,12 @@ public interface Function<T, U> {
       }
     };
   }
+
+  static Function<Integer, Integer> compose2(Function<Integer, Integer> f1,
+                                             Function<Integer,Integer> f2) {
+    return arg -> f1.apply(f2.apply(arg));
+    }
 }
+
 
 
