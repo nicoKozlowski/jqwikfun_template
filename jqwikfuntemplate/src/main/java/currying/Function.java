@@ -28,6 +28,16 @@ public interface Function<T, U> {
   static <T, U, V> Function<U, Function<T, V>> flip(Function<T, Function<U, V>> f) {
     return u -> t -> f.apply(t).apply(u);
   }
+
+  public final Function<Integer, Integer> fact = n -> n == 0 ? 1 : n * this.fact.apply(n - 1);
+
+  static <T> Function<T, T> id() {
+    return t -> t;
+  }
+
+  static Function<Boolean, Boolean> not() {
+    return x -> !x;
+  }
 }
 
 
