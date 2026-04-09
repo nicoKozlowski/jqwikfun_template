@@ -22,7 +22,12 @@ public interface Function<T, U> {
     return arg -> f1.apply(f2.apply(arg));
   }
 
-  Function<Integer, Function<Integer, Integer>> add = x -> y -> x + y;
+  Function<Integer, Function<Integer, Integer>> add
+          = x -> y -> x + y;
+
+  static <T, U, V> Function<U, Function<T, V>> flip(Function<T, Function<U, V>> f) {
+    return u -> t -> f.apply(t).apply(u);
+  }
 }
 
 
