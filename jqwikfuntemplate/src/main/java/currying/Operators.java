@@ -18,4 +18,12 @@ public class Operators {
     static Function<Boolean, Function<Boolean, Boolean>> or() {
         return x -> y -> x || y;
     }
+
+    static Function<Boolean, Function<Boolean, Boolean>> nand() {
+        return x -> y -> !(x && y);
+    }
+
+    static Function<Boolean, Function<Boolean, Boolean>> nor() {
+        return x -> y -> !(x || y);
+    }
 }
