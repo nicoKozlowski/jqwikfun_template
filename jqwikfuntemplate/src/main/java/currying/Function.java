@@ -29,8 +29,6 @@ public interface Function<T, U> {
     return u -> t -> f.apply(t).apply(u);
   }
 
-  public final Function<Integer, Integer> fact = n -> n == 0 ? 1 : n * this.fact.apply(n - 1);
-
   static <T> Function<T, T> id() {
     return t -> t;
   }
