@@ -26,4 +26,8 @@ public class Operators {
     static Function<Boolean, Function<Boolean, Boolean>> nor() {
         return x -> y -> !(x || y);
     }
+
+    static Function<Integer, Boolean> odd() {
+        return x -> x % 2 != 0;
+    }
 }
