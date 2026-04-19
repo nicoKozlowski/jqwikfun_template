@@ -28,37 +28,37 @@ public class BinomTest {
     }
 
     @Property
-    boolean prop_binom1(@ForAll @IntRange(max = 100) int n) {
+    boolean prop_binom1(@ForAll @IntRange(min = 0, max = 100) int n) {
         return binom(n, 0) == 1;
     }
 
     @Property
-    boolean prop_binom2(@ForAll @IntRange(max = 100) int n) {
+    boolean prop_binom2(@ForAll @IntRange(min = 0, max = 100) int n) {
         return binom(n, n) == 1;
     }
 
     @Property
-    boolean prop_binom3(@ForAll @IntRange(max = 100) int n) {
+    boolean prop_binom3(@ForAll @IntRange(min = 0, max = 100) int n) {
         return binom(n, 1) == n;
     }
 
     @Property
-    boolean prop_binom4(@ForAll @IntRange(max = 20) int n,
-                        @ForAll @IntRange(max = 20) int k) {
+    boolean prop_binom4(@ForAll @IntRange(min = 0, max = 20) int n,
+                        @ForAll @IntRange(min = 0, max = 20) int k) {
         Assume.that(n >= k);
         return binom(n, k) == binom(n, n - k);
     }
 
     @Property
-    boolean prop_binom5(@ForAll @IntRange(max = 20) int n,
+    boolean prop_binom5(@ForAll @IntRange(min = 0, max = 20) int n,
                         @ForAll @IntRange(min = 1, max = 20) int k) {
         return binom(n, k) * k == binom(n - 1, k - 1) * n;
     }
 
     @Property
-    boolean prop_binom6(@ForAll @IntRange(max = 20) int n,
-                        @ForAll @IntRange(max = 20) int k,
-                        @ForAll @IntRange(max = 20) int h) {
+    boolean prop_binom6(@ForAll @IntRange(min = 0, max = 20) int n,
+                        @ForAll @IntRange(min = 0, max = 20) int k,
+                        @ForAll @IntRange(min = 0, max = 20) int h) {
         return binom(n, h) * binom(n - h, k)
             == binom(n, k) * binom(n - k, h);
     }
