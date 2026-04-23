@@ -8,7 +8,7 @@ import static currying.Functions.binom;
 public class BinomTest {
     @Example
     boolean binom_example() {
-        return binom.apply(3, 2) == 3;
+        return binom.apply(3).apply(2) == 3;
     }
 
     @Data
@@ -25,42 +25,42 @@ public class BinomTest {
     @Property
     @FromData("data")
     boolean data_binom(@ForAll int n, @ForAll int k, @ForAll int expected) {
-        return binom.apply(n, k) == expected;
+        return binom.apply(n).apply(k) == expected;
     }
 
     @Property
     boolean prop_binom1(@ForAll @IntRange(max = 100) int n) {
-        return binom.apply(n, 0) == 1;
+        return binom.apply(n).apply(0) == 1;
     }
 
     @Property
     boolean prop_binom2(@ForAll @IntRange(max = 100) int n) {
-        return binom.apply(n, n) == 1;
+        return binom.apply(n).apply(n) == 1;
     }
 
     @Property
     boolean prop_binom3(@ForAll @IntRange(max = 100) int n) {
-        return binom.apply(n, 1) == n;
+        return binom.apply(n).apply(1) == n;
     }
 
     @Property
     boolean prop_binom4(@ForAll @IntRange(max = 20) int n,
                         @ForAll @IntRange(max = 20) int k) {
         Assume.that(n >= k);
-        return binom.apply(n, k).equals(binom.apply(n, n - k));
+        return binom.apply(n).apply(k).equals(binom.apply(n).apply(n - k));
     }
 
     @Property
     boolean prop_binom5(@ForAll @IntRange(max = 20) int n,
                         @ForAll @IntRange(min = 1, max = 20) int k) {
-        return binom.apply(n, k) * k == binom.apply(n - 1, k - 1) * n;
+        return binom.apply(n).apply(k) * k == binom.apply(n - 1).apply(k - 1) * n;
     }
 
     @Property
     boolean prop_binom6(@ForAll @IntRange(max = 20) int n,
                         @ForAll @IntRange(max = 20) int k,
                         @ForAll @IntRange(max = 20) int h) {
-        return binom.apply(n, h) * binom.apply(n - h, k)
-                == binom.apply(n, k) * binom.apply(n - k, h);
+        return binom.apply(n).apply(h) * binom.apply(n - h).apply(k)
+                == binom.apply(n).apply(k) * binom.apply(n - k).apply(h);
     }
 }

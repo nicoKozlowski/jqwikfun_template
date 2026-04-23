@@ -41,13 +41,13 @@ public class FibTest {
     boolean prop_fib2(@ForAll @IntRange(min = 1, max = 20) int m,
                       @ForAll @IntRange(min = 1, max = 20) int n) {
         Assume.that( m > 0 && n > 0);
-        return ggT.apply(fib.apply(m), fib.apply(n)).equals(fib.apply(ggT.apply(m, n)));
+        return ggT.apply(fib.apply(m)).apply(fib.apply(n)).equals(fib.apply(ggT.apply(m).apply(n)));
     }
 
     @Property
     boolean prop_fib3(@ForAll @IntRange(min = 1, max = 20) int n) {
         Assume.that( n > 0);
-        return ggT.apply(fib.apply(n), fib.apply(n + 1)) == 1;
+        return ggT.apply(fib.apply(n)).apply(fib.apply(n + 1)) == 1;
     }
 
     public int fibSum(int n) {
