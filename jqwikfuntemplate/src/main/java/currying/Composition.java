@@ -1,4 +1,5 @@
 package currying;
+import static currying.Function.compose;
 import static currying.Functions.fib;
 import static currying.Operators.odd;
 import static currying.Operators.not;
@@ -6,8 +7,8 @@ import static currying.Operators.not;
 public class Composition {
 
     public static final Function<Integer, Boolean> even
-        = n -> not().apply(odd().apply(n));
+        = compose(not(), odd());
 
     public static final Function<Integer, Boolean> evenFib
-        = n -> even.apply(fib.apply(n));
+        = compose(even, fib);
 }

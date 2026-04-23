@@ -17,7 +17,7 @@ public class Methods {
     return n <= 1 ? 1 : n * fact(n - 1);
   }
 
-   static int binom(int n, int k) {
+  static int binom(int n, int k) {
     return k == 0 || k == n ? 1 : k < 0 || k > n ? 0 : binom(n - 1, k - 1) + binom(n - 1, k);
   }
 
