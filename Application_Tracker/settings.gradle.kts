@@ -1,0 +1,1 @@
+rootProject.name = "Application_Tracker"
