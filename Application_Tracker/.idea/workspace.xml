@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18cffd2d-59d6-42ca-96da-db1624ec0954" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tracker/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tracker/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tracker/model/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tracker/model/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jqwikfuntemplate/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jqwikfuntemplate/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
