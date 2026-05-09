@@ -46,8 +46,9 @@ public class Application {
         return this.contact;
     }
 
+    @Override
     public String toString() {
-        return String.format("%s: %s - %s | %s | %s | %s |",
+        return String.format("\n%s: \n| address: %s |\n| position: %s |\n| date: %s |\n| status: %s |\n| contact: %s |",
                 this.company,
                 this.address,
                 this.position,
